@@ -60,7 +60,7 @@
     </div>
     <div class="cursor-info gelatine">
       <div>Go to <span class="zone-name"></span></div>
-      <div class="users-online"><span class="circle">16</span> users online</div>
+      <div class="users-online">Use right click to go there</div>
     </div>
   </div>
 </body>
@@ -103,13 +103,13 @@
         $( this ).css("z-index", "3");
       }
     );
-
-    //WA.chat.sendChatMessage('Hello ' + WA.player.name, 'Workadventure Team');
-    $(".map-img").on('click', function() {
-      var x = $(this).data("x");
-      var y = $(this).data("y");
-      WA.player.moveTo(x, y, 10);
-
+    $(document).ready(function() {
+      $(".map-img").on("contextmenu",function(){
+        var x = $(this).data("x");
+        var y = $(this).data("y");
+        WA.player.moveTo(x, y, 10);
+        return false;
+      });
     });
   });
 </script>

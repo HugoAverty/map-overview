@@ -289,7 +289,6 @@ textarea {
   min-height: 88px;
   border-radius: 16px;
   position: relative;
-  display: flex;
   padding: 0 1.75rem;
   background-color: rgba(27,42,65,.65);
   backdrop-filter: blur(8px);
@@ -352,7 +351,7 @@ textarea {
 
 .map-container .map-img.map-img-open-office {
   top: 1022px;
-  left: 2293px;
+  left: 2297px;
   z-index: 3;
 }
 
@@ -406,4 +405,13 @@ textarea {
   padding: 6px;
   font-size: 14px;
   color: rgba(27,42,65,1);
+}
+.zone-wrapper {
+
+}
+.zone-wrapper h2 {
+
+}
+.zone-wrapper .zone {
+  display: flex;
 }

@@ -394,8 +394,10 @@ textarea {
 
 .users-online {
   margin-top: 12px;
-  font-weight: bold;
   font-size: 18px;
+  font-style: italic;
+  opacity: .5;
+  font-weight: normal;
 }
 .users-online .circle {
   height: 6px;

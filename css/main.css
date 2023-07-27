@@ -396,8 +396,8 @@ textarea {
   margin-top: 12px;
   font-size: 18px;
   font-style: italic;
-  opacity: .5;
   font-weight: normal;
+  color: #678AC0;
 }
 .users-online .circle {
   height: 6px;

@@ -48,11 +48,11 @@
     <div id="map" class="map">
       <div class="map-container">
         <img src="img/closed-office.png" class="map-img map-img-closed-office"  />
-        <img src="img/conference.png" class="map-img map-img-conference" data-zone="conference room" data-name="conference" />
-        <img src="img/coworking.png" class="map-img map-img-coworking" data-zone="coworking space" data-name="coworking" />
-        <img src="img/meeting-rooms.png" class="map-img map-img-meeting-rooms" data-zone="meeting rooms" data-name="meeting" />
-        <img src="img/open-office.png" class="map-img map-img-open-office" data-zone="Workadventure office" data-name="office" />
-        <img src="img/showcase.png" class="map-img map-img-showcase" data-zone="our clients showcase room" data-name="showcase" />
+        <img src="img/conference.png" class="map-img map-img-conference" data-zone="conference room" data-name="conference" data-x="950" data-y="1850" />
+        <img src="img/coworking.png" class="map-img map-img-coworking" data-zone="coworking space" data-name="coworking" data-x="5800" data-y="2790" />
+        <img src="img/meeting-rooms.png" class="map-img map-img-meeting-rooms" data-zone="meeting rooms" data-name="meeting" data-x="1850" data-y="2240" />
+        <img src="img/open-office.png" class="map-img map-img-open-office" data-zone="Workadventure office" data-name="office" data-x="3333" data-y="2385" />
+        <img src="img/showcase.png" class="map-img map-img-showcase" data-zone="our clients showcase room" data-name="showcase" data-x="4362" data-y="2711" />
         <img src="img/trees.png" class="map-img-bg map-img-trees" />
         <img src="img/map-object.png" class="map-img-bg map-img-map-object" />
         <img src="img/ground.png" class="map-img-bg map-img-ground" />
@@ -106,10 +106,10 @@
 
     //WA.chat.sendChatMessage('Hello ' + WA.player.name, 'Workadventure Team');
     $(".map-img").on('click', function() {
-      WA.chat.sendChatMessage('Hello world', 'Mr Robot');
-      alert("TOTO");
-      WA.player.moveTo(950, 1850, 10);
-      var zoneName = $(this).data("name");
+      var x = $(this).data("x");
+      var y = $(this).data("y");
+      WA.player.moveTo(x, y, 10);
+
     });
   });
 </script>

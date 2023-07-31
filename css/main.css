@@ -280,21 +280,22 @@ textarea {
 }
 
 .header {
-  position: absolute;
-  z-index: 10;
-  padding: 32px;
 }
 
 .header .legend {
   min-height: 88px;
-  border-radius: 16px;
-  position: relative;
-  padding: 0 1.75rem;
+  position: absolute;
+  z-index: 10;
+  padding: 1.75rem;
   background-color: rgba(27,42,65,.65);
   backdrop-filter: blur(8px);
   color: white;
   width: 100%;
   font-weight: bold;
+}
+
+.header .legend h1 {
+  margin: 0;
 }
 
 .map {
@@ -339,31 +340,31 @@ textarea {
 
 .map-container .map-img.map-img-conference {
   top: 223px;
-  left: 0;
+  left: 185px;
   z-index: 3;
 }
 
 .map-container .map-img.map-img-meeting-rooms {
-  top: 672px;
-  left: 1166px;
+  top: 875px;
+  left: 1375px;
   z-index: 3;
 }
 
 .map-container .map-img.map-img-open-office {
   top: 1022px;
-  left: 2297px;
+  left: 2409px;
   z-index: 3;
 }
 
 .map-container .map-img.map-img-coworking {
-  top: 1780px;
-  left: 3584px;
+  top: 1815px;
+  left: 5215px;
   z-index: 3;
 }
 
 .map-container .map-img.map-img-showcase {
-  top: 1414px;
-  left: 4884px;
+  top: 1417px;
+  left: 4092px;
   z-index: 3;
 }
 
@@ -380,6 +381,7 @@ textarea {
 
 .cursor-info .zone-name {
   font-weight: bold;
+  text-align: center;
 }
 
 .gelatine {
@@ -387,9 +389,9 @@ textarea {
 }
 @keyframes gelatine {
   from, to { transform: scale(1, 1); }
-  25% { transform: scale(0.95, 1.05); }
-  50% { transform: scale(1.05, 0.95); }
-  75% { transform: scale(0.975, 1.025); }
+  25% { transform: scale(0.98, 1.02); }
+  50% { transform: scale(1.02, 0.98); }
+  75% { transform: scale(0.99, 1.09); }
 }
 
 .users-online {

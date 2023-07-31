@@ -106,6 +106,7 @@
     );
     $(document).ready(function() {
       $(".map-img").on("contextmenu",function(){
+        WA.ui.modal.closeModal();
         var x = $(this).data("x");
         var y = $(this).data("y");
         WA.player.moveTo(x, y, 10);

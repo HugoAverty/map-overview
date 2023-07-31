@@ -12,21 +12,25 @@
   <link rel="stylesheet" href="css/main.css">
 
   <meta name="theme-color" content="#fafafa">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-
-
-  <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom/dist/panzoom.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-
-  <script src="https://play.workadventu.re/iframe_api.js"></script>
-
 </head>
 
 <body>
-  <div class="global-wrapper">
+<div class="loader" style="  background: rgba(27,42,65, 1);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;">
+  <img src="img/Workadventure.gif" height="50" style="  position: absolute;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;" />
+</div>
+  <div class="global-wrapper" style="display: none">
     <!--
     <div class="header">
       <div class="legend">
@@ -64,56 +68,68 @@
       <div class="users-online"><img src="img/mouse.gif" width="64" /> Use right click to go there</div>
     </div>
   </div>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom/dist/panzoom.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://play.workadventu.re/iframe_api.js"></script>
+  <script>
+    $(function() {
+      const element = document.getElementById('map');
+      const panzoom = Panzoom(element, {
+        canvas:true,
+        startY: "-1200px",
+        startX: "-1200px",
+        startScale: 0.5,
+        maxScale: 1,
+        minScale: 0.25,
+      });
+
+      $(".map-img").on('mousemove', function(e){
+        $('.cursor-info').css({
+          left:  e.pageX + 25,
+          top:   e.pageY + 25
+        });
+      });
+
+      // enable mouse wheel
+      const parent = element.parentElement
+      parent.addEventListener('wheel', panzoom.zoomWithWheel);
+      $(".map-img").hover(
+        function() {
+          var dataValue = $(this).data("zone");
+          $(".zone-name").html(dataValue);
+          $(".cursor-info").fadeIn(100);
+
+          $(".map-img").css("opacity", ".35");
+          $(".map-img-bg").css("opacity", ".35");
+          $( this ).css("opacity", "1");
+          $( this ).css("z-index", "4");
+        }, function() {
+          $(".map-img").css("opacity", "1");
+          $(".map-img-bg").css("opacity", "1");
+          $(".cursor-info").fadeOut(100);
+          $( this ).css("z-index", "3");
+        }
+      );
+      $(document).ready(function() {
+        $(".map-img").on("contextmenu",function(){
+          WA.ui.modal.closeModal();
+          var x = $(this).data("x");
+          var y = $(this).data("y");
+          WA.player.moveTo(x, y, 10);
+          return false;
+        });
+      });
+    });
+    window.onload = function() {
+      $(".loader").fadeOut(100);
+      $(".global-wrapper").fadeIn(100);
+    };
+  </script>
 </body>
-<script>
-  $(function() {
-    const element = document.getElementById('map');
-    const panzoom = Panzoom(element, {
-      canvas:true,
-      startY: "-1200px",
-      startX: "-1200px",
-      startScale: 0.5,
-      maxScale: 1,
-      minScale: 0.25,
-    });
-
-    $(".map-img").on('mousemove', function(e){
-      $('.cursor-info').css({
-        left:  e.pageX + 25,
-        top:   e.pageY + 25
-      });
-    });
-
-    // enable mouse wheel
-    const parent = element.parentElement
-    parent.addEventListener('wheel', panzoom.zoomWithWheel);
-    $(".map-img").hover(
-      function() {
-        var dataValue = $(this).data("zone");
-        $(".zone-name").html(dataValue);
-        $(".cursor-info").fadeIn(100);
-
-        $(".map-img").css("opacity", ".35");
-        $(".map-img-bg").css("opacity", ".35");
-        $( this ).css("opacity", "1");
-        $( this ).css("z-index", "4");
-      }, function() {
-        $(".map-img").css("opacity", "1");
-        $(".map-img-bg").css("opacity", "1");
-        $(".cursor-info").fadeOut(100);
-        $( this ).css("z-index", "3");
-      }
-    );
-    $(document).ready(function() {
-      $(".map-img").on("contextmenu",function(){
-        WA.ui.modal.closeModal();
-        var x = $(this).data("x");
-        var y = $(this).data("y");
-        WA.player.moveTo(x, y, 10);
-        return false;
-      });
-    });
-  });
-</script>
 
 </html>

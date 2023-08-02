@@ -41,6 +41,12 @@
     </div>
     <div id="map" class="map">
       <div class="map-container">
+        <div class="here" style="height: 50px; width:50px; background: red; position: absolute; z-index: 20; top: 2827px; left:3393px;">
+          <div style="position: relative">
+            <div class='pin'></div>
+            <div class='pulse'></div>
+          </div>
+        </div>
         <img src="img/conference.png" class="map-img map-img-conference" data-zone="conference room" data-name="conference" data-x="900" data-y="2000" />
         <img src="img/coworking.png" class="map-img map-img-coworking" data-zone="coworking space" data-name="coworking" data-x="5800" data-y="2880" />
         <img src="img/meeting-rooms.png" class="map-img map-img-meeting-rooms" data-zone="meeting rooms" data-name="meeting" data-x="1843" data-y="2329" />
@@ -79,8 +85,15 @@
         }
         return false;
       };
-      console.log(getUrlParameter('x'));
-      console.log(getUrlParameter('y'));
+      var getX = getUrlParameter('x');
+      var getY =  getUrlParameter('y');
+      if(getX && getY) {
+        console.log("OK : getX && getY")
+        $('.here').css({
+          left:  getX + "px",
+          top:   getY + "px"
+        });
+      }
 
       const element = document.getElementById('map');
       const panzoom = Panzoom(element, {

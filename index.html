@@ -85,10 +85,12 @@
         }
         return false;
       };
-      var getX = getUrlParameter('x') + 24;
-      var getY =  getUrlParameter('y') - 146;
+      var getX = parseInt(getUrlParameter('x')) + 24;
+      var getY =  parseInt(getUrlParameter('y')) - 146;
       if(getX && getY) {
-        console.log("OK : getX && getY")
+        console.log("OK : getX && getY");
+        console.log(getX);
+        console.log(getY);
         $('.here').css({
           left:  getX + "px",
           top:   getY + "px"
@@ -98,9 +100,11 @@
       const element = document.getElementById('map');
       const panzoom = Panzoom(element, {
         canvas:true,
-        startY: "-1200px",
-        startX: "-1200px",
-        startScale: 0.5,
+        //startY: "-" + getY + "px",
+        //startX: "-" + getX + "px",
+        startY: "-1700px",
+        startX: "-1800px",
+        startScale: 0.35,
         maxScale: 1,
         minScale: 0.25,
       });

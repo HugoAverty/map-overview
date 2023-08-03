@@ -98,13 +98,17 @@
       }
 
       const element = document.getElementById('map');
+
+      const initPointerX = getX - (window.innerWidth / 2);
+      const initPointerY = getY - (window.innerHeight / 2);
+
       const panzoom = Panzoom(element, {
         canvas:true,
-        //startY: "-" + getY + "px",
-        //startX: "-" + getX + "px",
-        startY: "-1700px",
-        startX: "-1800px",
-        startScale: 0.35,
+        startY: "-" + initPointerY + "px",
+        startX: "-" + initPointerX + "px",
+        //startY: "00px",
+        //startX: "0px",
+        startScale: .35,
         maxScale: 1,
         minScale: 0.25,
       });

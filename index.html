@@ -85,8 +85,8 @@
         }
         return false;
       };
-      var getX = getUrlParameter('x');
-      var getY =  getUrlParameter('y');
+      var getX = getUrlParameter('x') + 24;
+      var getY =  getUrlParameter('y') - 146;
       if(getX && getY) {
         console.log("OK : getX && getY")
         $('.here').css({

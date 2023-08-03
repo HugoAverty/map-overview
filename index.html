@@ -41,7 +41,7 @@
     </div>
     <div id="map" class="map">
       <div class="map-container">
-        <div class="here" style="height: 50px; width:50px; background: red; position: absolute; z-index: 20; top: 2827px; left:3393px;">
+        <div data-zone="YOUR ARE HERE" class="here" style="height: 50px; width:50px; background: red; position: absolute; z-index: 20; top: 2827px; left:3393px;">
           <div style="position: relative">
             <div class='pin'></div>
             <div class='pulse'></div>
@@ -56,7 +56,7 @@
       </div>
     </div>
     <div class="cursor-info gelatine">
-      <div>Go to <span class="zone-name"></span></div>
+      <div><span class="go-to">Go to</span><span class="zone-name"></span></div>
       <div class="users-online"><img src="img/mouse.gif" width="64" /> Use right click to go there</div>
     </div>
   </div>
@@ -109,7 +109,7 @@
         minScale: 0.25,
       });
 
-      $(".map-img").on('mousemove', function(e){
+      $(".map-img, .here").on('mousemove', function(e){
         $('.cursor-info').css({
           left:  e.pageX + 25,
           top:   e.pageY + 25
@@ -134,6 +134,19 @@
           $(".map-img-bg").css("opacity", "1");
           $(".cursor-info").fadeOut(100);
           $( this ).css("z-index", "3");
+        }
+      );
+      $(".here").hover(
+        function() {
+          var dataValue = $(this).data("zone");
+          $(".zone-name").html(dataValue);
+          $(".go-to").hide();
+          $(".users-online").hide();
+          $(".cursor-info").fadeIn(100);
+        }, function() {
+          $(".cursor-info").fadeOut(100);
+          $(".go-to").show();
+          $(".users-online").show();
         }
       );
       $(document).ready(function() {

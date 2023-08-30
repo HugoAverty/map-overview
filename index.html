@@ -51,7 +51,7 @@
         <img src="img/meeting-rooms.png" loading="lazy" class="map-img map-img-meeting-rooms lazy" data-zone="meeting rooms" data-name="meeting" data-x="1843" data-y="2329" />
         <img src="img/open-office.png" loading="lazy" class="map-img map-img-open-office lazy" data-zone="Workadventure office" data-name="office" data-x="3343" data-y="2484" />
         <img src="img/showcase.png" loading="lazy" class="map-img map-img-showcase lazy" data-zone="our clients showcase room" data-name="showcase" data-x="4357" data-y="2813" />
-        <img src="img/ground.jpg" loading="lazy" class="map-img-bg map-img-ground lazy" />
+        <img src="img/ground.webp" loading="lazy" class="map-img-bg map-img-ground lazy" />
       </div>
     </div>
     <div class="cursor-info gelatine">
@@ -86,8 +86,12 @@
         }
         return false;
       };
-      var getX = parseInt(getUrlParameter('x')) + 24;
-      var getY =  parseInt(getUrlParameter('y')) - 146;
+      const x = getUrlParameter('x');
+      if(x === false) x = 3424;
+      const y = getUrlParameter('y');
+      if(y === false) y = 2753;
+      var getX = parseInt(x) + 24;
+      var getY =  parseInt(y) - 146;
       if(getX && getY) {
         console.log("OK : getX && getY");
         console.log(getX);
